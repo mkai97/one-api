@@ -83,6 +83,11 @@ _✨ 通过标准的 OpenAI API 格式访问所有的大模型，开箱即用 �
    + [x] [零一万物](https://platform.lingyiwanwu.com/)
    + [x] [阶跃星辰](https://platform.stepfun.com/)
    + [x] [Coze](https://www.coze.com/)
+   + [x] [Cohere](https://cohere.com/)
+   + [x] [DeepSeek](https://www.deepseek.com/)
+   + [x] [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
+   + [x] [DeepL](https://www.deepl.com/)
+   + [x] [together.ai](https://www.together.ai/)
 2. 支持配置镜像以及众多[第三方代理服务](https://iamazing.cn/page/openai-api-third-party-services)。
 3. 支持通过**负载均衡**的方式访问多个渠道。
 4. 支持 **stream 模式**，可以通过流式传输实现打字机效果。
@@ -379,14 +384,17 @@ graph LR
     + `TIKTOKEN_CACHE_DIR`：默认程序启动时会联网下载一些通用的词元的编码，如：`gpt-3.5-turbo`，在一些网络环境不稳定，或者离线情况，可能会导致启动有问题，可以配置此目录缓存数据，可迁移到离线环境。
     + `DATA_GYM_CACHE_DIR`：目前该配置作用与 `TIKTOKEN_CACHE_DIR` 一致，但是优先级没有它高。
 17. `RELAY_TIMEOUT`：中继超时设置，单位为秒，默认不设置超时时间。
-18. `SQLITE_BUSY_TIMEOUT`：SQLite 锁等待超时设置，单位为毫秒，默认 `3000`。
-19. `GEMINI_SAFETY_SETTING`：Gemini 的安全设置，默认 `BLOCK_NONE`。
-20. `GEMINI_VERSION`：One API 所使用的 Gemini 版本，默认为 `v1`。
-21. `THEME`：系统的主题设置，默认为 `default`，具体可选值参考[此处](./web/README.md)。
-22. `ENABLE_METRIC`：是否根据请求成功率禁用渠道，默认不开启，可选值为 `true` 和 `false`。
-23. `METRIC_QUEUE_SIZE`：请求成功率统计队列大小，默认为 `10`。
-24. `METRIC_SUCCESS_RATE_THRESHOLD`：请求成功率阈值，默认为 `0.8`。
-25. `INITIAL_ROOT_TOKEN`：如果设置了该值，则在系统首次启动时会自动创建一个值为该环境变量值的 root 用户令牌。
+18. `RELAY_PROXY`：设置后使用该代理来请求 API。
+19. `USER_CONTENT_REQUEST_TIMEOUT`：用户上传内容下载超时时间，单位为秒。
+20. `USER_CONTENT_REQUEST_PROXY`：设置后使用该代理来请求用户上传的内容，例如图片。
+21. `SQLITE_BUSY_TIMEOUT`：SQLite 锁等待超时设置，单位为毫秒，默认 `3000`。
+22. `GEMINI_SAFETY_SETTING`：Gemini 的安全设置，默认 `BLOCK_NONE`。
+23. `GEMINI_VERSION`：One API 所使用的 Gemini 版本，默认为 `v1`。
+24. `THEME`：系统的主题设置，默认为 `default`，具体可选值参考[此处](./web/README.md)。
+25. `ENABLE_METRIC`：是否根据请求成功率禁用渠道，默认不开启，可选值为 `true` 和 `false`。
+26. `METRIC_QUEUE_SIZE`：请求成功率统计队列大小，默认为 `10`。
+27. `METRIC_SUCCESS_RATE_THRESHOLD`：请求成功率阈值，默认为 `0.8`。
+28. `INITIAL_ROOT_TOKEN`：如果设置了该值，则在系统首次启动时会自动创建一个值为该环境变量值的 root 用户令牌。
 
 ### 命令行参数
 1. `--port <port_number>`: 指定服务器监听的端口号，默认为 `3000`。
