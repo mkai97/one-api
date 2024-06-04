@@ -47,6 +47,10 @@ func Relay(c *gin.Context) {
 		requestBody, _ := common.GetRequestBody(c)
 		logger.Debugf(ctx, "debugger-- request body: %s", string(requestBody))
 	// }
+	if config.DebugEnabled {
+		requestBody, _ := common.GetRequestBody(c)
+		logger.Debugf(ctx, "debugger-- request body: %s", string(requestBody))
+	}
 	channelId := c.GetInt(ctxkey.ChannelId)
 	userId := c.GetInt("id")
 	bizErr := relayHelper(c, relayMode)
