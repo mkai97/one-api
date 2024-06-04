@@ -52,6 +52,9 @@ func Debug(ctx context.Context, msg string) {
 	// if config.DebugEnabled {
 		logHelper(ctx, loggerDEBUG, msg)
 	// }
+	if config.DebugEnabled {
+		logHelper(ctx, loggerDEBUG, msg)
+	}
 }
 
 func Info(ctx context.Context, msg string) {
