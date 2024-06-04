@@ -49,9 +49,9 @@ func SysError(s string) {
 }
 
 func Debug(ctx context.Context, msg string) {
-	if config.DebugEnabled {
+	// if config.DebugEnabled {
 		logHelper(ctx, loggerDEBUG, msg)
-	}
+	// }
 }
 
 func Info(ctx context.Context, msg string) {

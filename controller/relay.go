@@ -43,10 +43,10 @@ func relayHelper(c *gin.Context, relayMode int) *model.ErrorWithStatusCode {
 func Relay(c *gin.Context) {
 	ctx := c.Request.Context()
 	relayMode := relaymode.GetByPath(c.Request.URL.Path)
-	if config.DebugEnabled {
+	// if config.DebugEnabled {
 		requestBody, _ := common.GetRequestBody(c)
-		logger.Debugf(ctx, "request body: %s", string(requestBody))
-	}
+		logger.Debugf(ctx, "debugger-- request body: %s", string(requestBody))
+	// }
 	channelId := c.GetInt(ctxkey.ChannelId)
 	userId := c.GetInt("id")
 	bizErr := relayHelper(c, relayMode)
