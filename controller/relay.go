@@ -52,7 +52,7 @@ func Relay(c *gin.Context) {
 		logger.Debugf(ctx, "debugger-- request body: %s", string(requestBody))
 	}
 	channelId := c.GetInt(ctxkey.ChannelId)
-	userId := c.GetInt("id")
+	userId := c.GetInt(ctxkey.Id)
 	bizErr := relayHelper(c, relayMode)
 	if bizErr == nil {
 		monitor.Emit(channelId, true)
