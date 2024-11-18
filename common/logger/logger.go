@@ -62,9 +62,6 @@ func SysErrorf(format string, a ...any) {
 }
 
 func Debug(ctx context.Context, msg string) {
-	// if config.DebugEnabled {
-		logHelper(ctx, loggerDEBUG, msg)
-	// }
 	if config.DebugEnabled {
 		logHelper(ctx, loggerDEBUG, msg)
 	}

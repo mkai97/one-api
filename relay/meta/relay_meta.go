@@ -18,17 +18,19 @@ type Meta struct {
 	UserId       int
 	Group        string
 	ModelMapping map[string]string
-	BaseURL      string
-	APIKey       string
-	APIType      int
-	Config       model.ChannelConfig
-	IsStream     bool
+	// BaseURL is the proxy url set in the channel config
+	BaseURL  string
+	APIKey   string
+	APIType  int
+	Config   model.ChannelConfig
+	IsStream bool
 	// OriginModelName is the model name from the raw user request
 	OriginModelName string
 	// ActualModelName is the model name after mapping
 	ActualModelName string
 	RequestURLPath  string
 	PromptTokens    int // only for DoResponse
+	SystemPrompt    string
 }
 
 func GetByContext(c *gin.Context) *Meta {
@@ -45,6 +47,7 @@ func GetByContext(c *gin.Context) *Meta {
 		BaseURL:         c.GetString(ctxkey.BaseURL),
 		APIKey:          strings.TrimPrefix(c.Request.Header.Get("Authorization"), "Bearer "),
 		RequestURLPath:  c.Request.URL.String(),
+		SystemPrompt:    c.GetString(ctxkey.SystemPrompt),
 	}
 	cfg, ok := c.Get(ctxkey.Config)
 	if ok {
