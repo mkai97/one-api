@@ -11,3 +11,6 @@ data
 /web/node_modules
 cmd.md
 .env
+/one-api
+temp
+.DS_Store
